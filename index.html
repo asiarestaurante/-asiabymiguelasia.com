@@ -1,147 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mi Página - Restaurante</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; padding: 0;
-            background: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: #4CAF50;
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-        nav {
-            background: #333;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0; padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav li {
-            margin: 0;
-        }
-        nav a {
-            display: block;
-            padding: 1rem 2rem;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        nav a:hover {
-            background: #555;
-        }
-        section {
-            padding: 2rem;
-            max-width: 900px;
-            margin: 0 auto 2rem auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        /* Galería simple */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-            gap: 1rem;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 6px;
-            object-fit: cover;
-            height: 150px;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #eee;
-            font-size: 0.9rem;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurante Sushi Premium</title>
+  <style>
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid #8B0000; /* Borgoña */
+    }
+    nav {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+      font-weight: 500;
+    }
+    nav a {
+      color: #8B0000;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #8B0000;
+      transition: width 0.3s;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #4B0000;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto 4rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #8B0000;
+      padding-left: 0.5rem;
+      color: #111;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    p, ul {
+      font-weight: 300;
+      color: #444;
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    /* Estilo para la carta */
+    #carta h3 {
+      font-weight: 500;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #8B0000;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    /* Galería */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover,
+    .gallery img:focus {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      outline: none;
+    }
+    iframe {
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      height: 300px;
+    }
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 480px) {
+      nav {
+        flex-wrap: wrap;
+      }
+      nav a {
+        margin: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      .gallery img {
+        height: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <h1>Bienvenidos a Nuestro Restaurante</h1>
+  <h1>Restaurante Sushi Premium</h1>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="#donde-estamos">Donde estamos?</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#carta">Carta</a></li>
-        <li><a href="#galeria">Galería</a></li>
-    </ul>
+  <a href="#donde-estamos">Dónde estamos?</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#carta">Carta</a>
+  <a href="#galeria">Galería</a>
 </nav>
 
 <main>
-    <section id="donde-estamos">
-        <h2>¿Dónde estamos?</h2>
-        <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
-        <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
-        <div style="width:100%;height:300px;">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.123456789!2d-99.133208!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2e7f123456%3A0xabcdef1234567890!2sCalle%20Falsa%20123!5e0!3m2!1ses!2smx!4v1610000000000!5m2!1ses!2smx" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
+  <section id="donde-estamos">
+    <h2>¿Dónde estamos?</h2>
+    <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
+    <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.123456789!2d-99.133208!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2e7f123456%3A0xabcdef1234567890!2sCalle%20Falsa%20123!5e0!3m2!1ses!2smx!4v1610000000000!5m2!1ses!2smx" 
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
 
-    <section id="servicios">
-        <h2>Servicios</h2>
-        <ul>
-            <li>Comida para llevar</li>
-            <li>Servicio a domicilio</li>
-            <li>Reservaciones para eventos</li>
-            <li>Menú personalizado para grupos</li>
-        </ul>
-    </section>
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+      <li>Comida para llevar</li>
+      <li>Servicio a domicilio</li>
+      <li>Reservaciones para eventos</li>
+      <li>Menú personalizado para grupos</li>
+    </ul>
+  </section>
 
-    <section id="carta">
-        <h2>Carta</h2>
-        <h3>Entradas</h3>
-        <ul>
-            <li>Ensalada César - $80</li>
-            <li>Sopa del día - $60</li>
-        </ul>
-        <h3>Platos fuertes</h3>
-        <ul>
-            <li>Pollo al horno con papas - $150</li>
-            <li>Filete de res con verduras - $180</li>
-        </ul>
-        <h3>Postres</h3>
-        <ul>
-            <li>Pastel de chocolate - $70</li>
-            <li>Helado artesanal - $60</li>
-        </ul>
-    </section>
+  <section id="carta">
+    <h2>Carta</h2>
+    <h3>Entradas</h3>
+    <ul>
+      <li>Ensalada César - $80</li>
+      <li>Sopa del día - $60</li>
+    </ul>
+    <h3>Platos fuertes</h3>
+    <ul>
+      <li>Pollo al horno con papas - $150</li>
+      <li>Filete de res con verduras - $180</li>
+    </ul>
+    <h3>Postres</h3>
+    <ul>
+      <li>Pastel de chocolate - $70</li>
+      <li>Helado artesanal - $60</li>
+    </ul>
+  </section>
 
-    <section id="galeria">
-        <h2>Galería</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
-            <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
-            <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3" />
-            <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4" />
-        </div>
-    </section>
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
+      <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
+      <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3" />
+      <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4" />
+    </div>
+  </section>
 </main>
 
 <footer>
-    &copy; 2024 Mi Restaurante. Todos los derechos reservados.
+  &copy; 2024 Restaurante Sushi Premium. Todos los derechos reservados.
 </footer>
 
 </body>
