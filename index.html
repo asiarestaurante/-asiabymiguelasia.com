@@ -194,12 +194,36 @@
       padding-bottom: 0.25rem;
     }
 
-    .gallery {
+    /* GALERÍA */
+    #galeria {
+      background-color: #000;
+      padding: 0;
+      margin-bottom: 0;
+    }
+    #galeria > h2 {
+      padding-left: 0.75rem;
+      border-left: 6px solid #fff;
+      margin-bottom: 2rem;
+    }
+    #galeria h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .gallery-subsection {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
     }
-    .gallery img {
+    .gallery-subsection img {
       width: 100%;
       height: 160px;
       object-fit: cover;
@@ -209,8 +233,8 @@
       cursor: pointer;
       filter: brightness(0.9);
     }
-    .gallery img:hover,
-    .gallery img:focus {
+    .gallery-subsection img:hover,
+    .gallery-subsection img:focus {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(255 255 255 / 0.3);
       outline: none;
@@ -253,7 +277,7 @@
         font-size: 1rem;
         flex-wrap: wrap;
       }
-      .gallery img {
+      .gallery-subsection img {
         height: 140px;
       }
       main {
@@ -353,11 +377,40 @@
 
     <section id="galeria" tabindex="-1">
       <h2>Galería</h2>
-      <div class="gallery">
-        <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
-        <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
-        <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3" />
-        <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4" />
+
+      <h3>Exteriores</h3>
+      <div class="gallery-subsection">
+        <img src="https://via.placeholder.com/300x200?text=Exteriores+1" alt="Exteriores 1" />
+        <img src="https://via.placeholder.com/300x200?text=Exteriores+2" alt="Exteriores 2" />
+        <img src="https://via.placeholder.com/300x200?text=Exteriores+3" alt="Exteriores 3" />
+      </div>
+
+      <h3>Nuestro salón</h3>
+      <div class="gallery-subsection">
+        <img src="https://via.placeholder.com/300x200?text=Salon+1" alt="Nuestro salón 1" />
+        <img src="https://via.placeholder.com/300x200?text=Salon+2" alt="Nuestro salón 2" />
+        <img src="https://via.placeholder.com/300x200?text=Salon+3" alt="Nuestro salón 3" />
+      </div>
+
+      <h3>Cocina de autor</h3>
+      <div class="gallery-subsection">
+        <img src="https://via.placeholder.com/300x200?text=Cocina+1" alt="Cocina de autor 1" />
+        <img src="https://via.placeholder.com/300x200?text=Cocina+2" alt="Cocina de autor 2" />
+        <img src="https://via.placeholder.com/300x200?text=Cocina+3" alt="Cocina de autor 3" />
+      </div>
+
+      <h3>Sushi</h3>
+      <div class="gallery-subsection">
+        <img src="https://via.placeholder.com/300x200?text=Sushi+1" alt="Sushi 1" />
+        <img src="https://via.placeholder.com/300x200?text=Sushi+2" alt="Sushi 2" />
+        <img src="https://via.placeholder.com/300x200?text=Sushi+3" alt="Sushi 3" />
+      </div>
+
+      <h3>Nuestros amigos</h3>
+      <div class="gallery-subsection">
+        <img src="https://via.placeholder.com/300x200?text=Amigos+1" alt="Nuestros amigos 1" />
+        <img src="https://via.placeholder.com/300x200?text=Amigos+2" alt="Nuestros amigos 2" />
+        <img src="https://via.placeholder.com/300x200?text=Amigos+3" alt="Nuestros amigos 3" />
       </div>
     </section>
   </main>
