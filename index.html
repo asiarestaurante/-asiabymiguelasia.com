@@ -9,79 +9,89 @@
     *, *::before, *::after {
       box-sizing: border-box;
     }
-    body {
+    html, body {
       margin: 0;
+      height: 100%;
       font-family: 'Noto Sans JP', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #fff;
-      color: #222;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       scroll-behavior: smooth;
     }
-
-    /* Navegación fija */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
+    body {
+      color: #222;
       background: #fff;
-      border-bottom: 1px solid #ddd;
-      z-index: 1000;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      color: #000;
+
+    /* Contenedor pantalla completa */
+    .fullscreen-hero {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      background-image: url('https://api.serenitystar.ai/api/v2/file/download/public/fbc85552-7314-3044-b819-3a199c282da8');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+    /* Capa oscura para mejorar legibilidad */
+    .fullscreen-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    /* Contenido encima de la capa oscura */
+    .fullscreen-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .fullscreen-hero h1 {
       font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       user-select: none;
     }
-    nav {
+
+    .menu-links {
       display: flex;
-      gap: 2rem;
-    }
-    nav a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #444;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.3s ease;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      flex-direction: column;
+      gap: 1.5rem;
       font-family: 'Noto Sans JP', sans-serif;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #000;
-      transition: width 0.3s ease;
+    .menu-links a {
+      color: white;
+      font-weight: 600;
+      font-size: 1.5rem;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      padding: 0.5rem 1.5rem;
+      border: 2px solid white;
+      border-radius: 30px;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
     }
-    nav a:hover,
-    nav a:focus {
-      color: #000;
-    }
-    nav a:hover::after,
-    nav a:focus::after {
-      width: 100%;
+    .menu-links a:hover,
+    .menu-links a:focus {
+      background-color: white;
+      color: #111;
+      outline: none;
+      cursor: pointer;
     }
 
+    /* Secciones debajo */
     main {
-      padding: 6rem 2rem 4rem 2rem;
       max-width: 960px;
-      margin: 0 auto;
+      margin: 0 auto 4rem auto;
+      padding: 4rem 2rem 2rem 2rem;
+      scroll-margin-top: 80px; /* Para compensar la altura del header fijo si lo hubiera */
     }
 
     section {
@@ -116,7 +126,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Subtítulos en servicios y carta */
     #carta h3,
     #servicios h3 {
       font-family: 'Noto Serif JP', serif;
@@ -132,7 +141,6 @@
       padding-bottom: 0.25rem;
     }
 
-    /* Galería */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -178,17 +186,18 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      nav {
-        gap: 1rem;
+      .fullscreen-hero h1 {
+        font-size: 2.2rem;
       }
-      nav a {
-        font-size: 0.85rem;
+      .menu-links a {
+        font-size: 1.25rem;
+        padding: 0.5rem 1.2rem;
       }
       .gallery img {
         height: 140px;
       }
       main {
-        padding: 6rem 1rem 3rem 1rem;
+        padding: 3rem 1rem 2rem 1rem;
       }
     }
   </style>
@@ -197,98 +206,100 @@
 </head>
 <body>
 
-<header>
-  <h1>Restaurante Sushi Premium</h1>
-  <nav>
-    <a href="#donde-estamos">Dónde estamos?</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#carta">Carta</a>
-    <a href="#galeria">Galería</a>
-  </nav>
-</header>
-
-<main>
-  <section id="donde-estamos">
-    <h2>¿Dónde estamos?</h2>
-    <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
-    <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.123456789!2d-99.133208!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2e7f123456%3A0xabcdef1234567890!2sCalle%20Falsa%20123!5e0!3m2!1ses!2smx!4v1610000000000!5m2!1ses!2smx" 
-      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </section>
-
-  <section id="servicios">
-    <h2>Servicios</h2>
-
-    <h3>Restaurante</h3>
-    <ul>
-      <li>Experiencia gastronómica en un ambiente elegante</li>
-      <li>Menú a la carta con ingredientes frescos y de alta calidad</li>
-      <li>Atención personalizada y ambiente relajado</li>
-    </ul>
-
-    <h3>Deli & Take</h3>
-    <ul>
-      <li>Comida lista para llevar</li>
-      <li>Pedidos rápidos y cómodos</li>
-      <li>Opciones saludables y frescas para llevar</li>
-    </ul>
-
-    <h3>Eventos corporativos</h3>
-    <ul>
-      <li>Organización de eventos empresariales</li>
-      <li>Menús personalizados para reuniones y conferencias</li>
-      <li>Servicio profesional y discreto</li>
-    </ul>
-
-    <h3>Eventos privados</h3>
-    <ul>
-      <li>Celebraciones familiares y sociales</li>
-      <li>Espacios exclusivos para grupos</li>
-      <li>Menús adaptados a tus necesidades</li>
-    </ul>
-
-    <h3>Catering</h3>
-    <ul>
-      <li>Servicio de catering para cualquier tipo de evento</li>
-      <li>Presentación impecable y sabor excepcional</li>
-      <li>Opciones flexibles y personalizadas</li>
-    </ul>
-  </section>
-
-  <section id="carta">
-    <h2>Carta</h2>
-    <h3>Entradas</h3>
-    <ul>
-      <li>Ensalada César - $80</li>
-      <li>Sopa del día - $60</li>
-    </ul>
-    <h3>Platos fuertes</h3>
-    <ul>
-      <li>Pollo al horno con papas - $150</li>
-      <li>Filete de res con verduras - $180</li>
-    </ul>
-    <h3>Postres</h3>
-    <ul>
-      <li>Pastel de chocolate - $70</li>
-      <li>Helado artesanal - $60</li>
-    </ul>
-  </section>
-
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
-      <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
-      <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3" />
-      <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4" />
+  <div class="fullscreen-hero" role="banner" aria-label="Imagen principal con menú de navegación">
+    <div class="fullscreen-hero-content">
+      <h1>Restaurante Sushi Premium</h1>
+      <nav class="menu-links" aria-label="Menú principal">
+        <a href="#donde-estamos">Dónde estamos?</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#carta">Carta</a>
+        <a href="#galeria">Galería</a>
+      </nav>
     </div>
-  </section>
-</main>
+  </div>
 
-<footer>
-  &copy; 2024 Restaurante Sushi Premium. Todos los derechos reservados.
-</footer>
+  <main>
+    <section id="donde-estamos" tabindex="-1">
+      <h2>¿Dónde estamos?</h2>
+      <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
+      <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.123456789!2d-99.133208!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2e7f123456%3A0xabcdef1234567890!2sCalle%20Falsa%20123!5e0!3m2!1ses!2smx!4v1610000000000!5m2!1ses!2smx" 
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación del restaurante"></iframe>
+    </section>
+
+    <section id="servicios" tabindex="-1">
+      <h2>Servicios</h2>
+
+      <h3>Restaurante</h3>
+      <ul>
+        <li>Experiencia gastronómica en un ambiente elegante</li>
+        <li>Menú a la carta con ingredientes frescos y de alta calidad</li>
+        <li>Atención personalizada y ambiente relajado</li>
+      </ul>
+
+      <h3>Deli & Take</h3>
+      <ul>
+        <li>Comida lista para llevar</li>
+        <li>Pedidos rápidos y cómodos</li>
+        <li>Opciones saludables y frescas para llevar</li>
+      </ul>
+
+      <h3>Eventos corporativos</h3>
+      <ul>
+        <li>Organización de eventos empresariales</li>
+        <li>Menús personalizados para reuniones y conferencias</li>
+        <li>Servicio profesional y discreto</li>
+      </ul>
+
+      <h3>Eventos privados</h3>
+      <ul>
+        <li>Celebraciones familiares y sociales</li>
+        <li>Espacios exclusivos para grupos</li>
+        <li>Menús adaptados a tus necesidades</li>
+      </ul>
+
+      <h3>Catering</h3>
+      <ul>
+        <li>Servicio de catering para cualquier tipo de evento</li>
+        <li>Presentación impecable y sabor excepcional</li>
+        <li>Opciones flexibles y personalizadas</li>
+      </ul>
+    </section>
+
+    <section id="carta" tabindex="-1">
+      <h2>Carta</h2>
+      <h3>Entradas</h3>
+      <ul>
+        <li>Ensalada César - $80</li>
+        <li>Sopa del día - $60</li>
+      </ul>
+      <h3>Platos fuertes</h3>
+      <ul>
+        <li>Pollo al horno con papas - $150</li>
+        <li>Filete de res con verduras - $180</li>
+      </ul>
+      <h3>Postres</h3>
+      <ul>
+        <li>Pastel de chocolate - $70</li>
+        <li>Helado artesanal - $60</li>
+      </ul>
+    </section>
+
+    <section id="galeria" tabindex="-1">
+      <h2>Galería</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=Imagen+1" alt="Imagen 1" />
+        <img src="https://via.placeholder.com/300x200?text=Imagen+2" alt="Imagen 2" />
+        <img src="https://via.placeholder.com/300x200?text=Imagen+3" alt="Imagen 3" />
+        <img src="https://via.placeholder.com/300x200?text=Imagen+4" alt="Imagen 4" />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Restaurante Sushi Premium. Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
