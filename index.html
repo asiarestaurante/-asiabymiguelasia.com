@@ -26,7 +26,6 @@
       position: relative;
       height: 100vh;
       width: 100vw;
-      background-image: url('https://api.serenitystar.ai/api/v2/file/download/public/fbc85552-7314-3044-b819-3a199c282da8');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -142,7 +141,7 @@
       width: 100vw;
       max-width: 100vw;
       margin: 0;
-      padding: 4rem 2rem 2rem 2rem;
+      padding: 0 2rem 4rem 2rem;
       scroll-margin-top: 80px;
       background-color: #000;
       color: #fff;
@@ -159,7 +158,6 @@
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 1rem;
-      /* Eliminado borde izquierdo */
       padding-left: 0;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -183,7 +181,8 @@
     }
 
     #carta h3,
-    #servicios h3 {
+    #servicios h3,
+    #galeria h3 {
       font-family: 'Noto Serif JP', serif;
       font-weight: 700;
       font-size: 1.25rem;
@@ -192,7 +191,6 @@
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      /* Eliminado borde inferior */
       border-bottom: none;
       display: inline-block;
       padding-bottom: 0;
@@ -208,19 +206,6 @@
       padding-left: 0;
       border-left: none;
       margin-bottom: 2rem;
-    }
-    #galeria h3 {
-      font-family: 'Noto Serif JP', serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      color: #fff;
-      border-bottom: none;
-      display: inline-block;
-      padding-bottom: 0.3rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
     }
     .gallery-subsection {
       display: grid;
@@ -271,6 +256,41 @@
       margin-top: 4rem;
     }
 
+    /* Portada de cada sección */
+    .section-hero {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+    }
+    .section-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .section-hero h2 {
+      position: relative;
+      z-index: 1;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 4rem;
+      margin: 0;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .title {
@@ -294,6 +314,10 @@
       .logo {
         max-width: 220px;
       }
+      .section-hero h2 {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+      }
     }
   </style>
 </head>
@@ -314,8 +338,12 @@
   </div>
 
   <main>
+
+    <!-- Portada Dónde estamos -->
+    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Dónde estamos">
+      <h2>Dónde estamos</h2>
+    </div>
     <section id="donde-estamos" tabindex="-1">
-      <h2>¿Dónde estamos?</h2>
       <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
       <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
       <iframe 
@@ -323,9 +351,11 @@
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación del restaurante"></iframe>
     </section>
 
-    <section id="servicios" tabindex="-1">
+    <!-- Portada Servicios -->
+    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Servicios">
       <h2>Servicios</h2>
-
+    </div>
+    <section id="servicios" tabindex="-1">
       <h3>Restaurante</h3>
       <ul>
         <li>Experiencia gastronómica en un ambiente elegante</li>
@@ -362,8 +392,11 @@
       </ul>
     </section>
 
-    <section id="carta" tabindex="-1">
+    <!-- Portada Carta -->
+    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Carta">
       <h2>Carta</h2>
+    </div>
+    <section id="carta" tabindex="-1">
       <h3>Entradas</h3>
       <ul>
         <li>Ensalada César - $80</li>
@@ -381,9 +414,11 @@
       </ul>
     </section>
 
-    <section id="galeria" tabindex="-1">
+    <!-- Portada Galería -->
+    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Galería">
       <h2>Galería</h2>
-
+    </div>
+    <section id="galeria" tabindex="-1">
       <h3>Exteriores</h3>
       <div class="gallery-subsection">
         <img src="https://via.placeholder.com/300x200?text=Exteriores+1" alt="Exteriores 1" />
@@ -414,16 +449,4 @@
 
       <h3>Nuestros amigos</h3>
       <div class="gallery-subsection">
-        <img src="https://via.placeholder.com/300x200?text=Amigos+1" alt="Nuestros amigos 1" />
-        <img src="https://via.placeholder.com/300x200?text=Amigos+2" alt="Nuestros amigos 2" />
-        <img src="https://via.placeholder.com/300x200?text=Amigos+3" alt="Nuestros amigos 3" />
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2024 Asia by Miguel Asia. Todos los derechos reservados.
-  </footer>
-
-</body>
-</html>
+        <img src="https
