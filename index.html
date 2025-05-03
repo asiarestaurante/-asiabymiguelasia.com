@@ -12,145 +12,66 @@
     *, *::before, *::after {
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     html, body {
       margin: 0;
       height: 100%;
       font-family: 'Noto Sans JP', sans-serif;
-      scroll-behavior: smooth;
       background: #fff;
       color: #222;
     }
 
-    /* Contenedor pantalla completa */
-    .fullscreen-hero {
+    /* Contenedor portada */
+    .section-hero {
       position: relative;
-      height: 100vh;
+      height: 70vh; /* 70% de la altura de la ventana */
       width: 100vw;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
       padding: 0 1rem;
+      margin-bottom: 0;
+      scroll-margin-top: 0;
     }
-    /* Capa oscura para mejorar legibilidad */
-    .fullscreen-hero::before {
+    .section-hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.5);
       z-index: 0;
     }
-    /* Contenido encima de la capa oscura */
-    .fullscreen-hero-content {
+    .section-hero h2 {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    /* Logo */
-    .logo {
-      max-width: 280px;
-      width: 100%;
-      height: auto;
-      user-select: none;
-    }
-
-    /* Título con fuente serif, solo "A" mayúscula */
-    .title {
       font-family: 'Noto Serif JP', serif;
       font-weight: 700;
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin: 0;
-      letter-spacing: 0.1em;
-      user-select: none;
-      text-transform: lowercase;
-      position: relative;
-      color: white;
-    }
-    /* Mayúscula "A" */
-    .title::first-letter {
-      text-transform: uppercase;
-      font-size: 4.2rem;
       letter-spacing: 0.15em;
-    }
-
-    /* Subtítulo en blanco */
-    .subtitle {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
-      font-size: 1.5rem;
-      margin: 0 0 3rem 0;
-      letter-spacing: 0.15em;
-      font-style: italic;
-      color: white;
-      user-select: none;
-    }
-
-    /* Menú horizontal minimalista */
-    .menu-links {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 500;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       user-select: none;
     }
-    .menu-links a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      padding: 0.25rem 0;
-      cursor: pointer;
-      position: relative;
-    }
-    .menu-links a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: white;
-      bottom: -4px;
-      left: 0;
-      transition: width 0.3s ease;
-    }
-    .menu-links a:hover,
-    .menu-links a:focus {
-      color: #ddd;
-      outline: none;
-    }
-    .menu-links a:hover::after,
-    .menu-links a:focus::after {
-      width: 100%;
-    }
 
-    /* Secciones con fondo negro y texto blanco ocupando todo el ancho */
+    /* Secciones con contenido visible debajo de portada */
     main {
       width: 100vw;
       max-width: 100vw;
       margin: 0;
-      padding: 0 2rem 4rem 2rem;
-      scroll-margin-top: 80px;
       background-color: #000;
       color: #fff;
     }
-
     section {
       max-width: 960px;
       margin: 0 auto 5rem auto;
-      padding: 0;
+      padding: 70vh 2rem 2rem 2rem; /* padding-top igual a altura portada */
+      box-sizing: border-box;
     }
 
     h2 {
@@ -256,10 +177,116 @@
       margin-top: 4rem;
     }
 
-    /* Portada de cada sección */
+    /* Logo y header */
+    .fullscreen-hero {
+      position: relative;
+      height: 75vh;
+      width: 100vw;
+      background-image: url('https://api.serenitystar.ai/api/v2/file/download/public/d3e1c390-16b4-6f74-d7cb-3a19a5adab88');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      margin-bottom: 0;
+    }
+    .fullscreen-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .fullscreen-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      user-select: none;
+    }
+    .title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700;
+      font-size: 3.5rem;
+      margin: 0;
+      letter-spacing: 0.1em;
+      user-select: none;
+      text-transform: lowercase;
+      position: relative;
+      color: white;
+    }
+    .title::first-letter {
+      text-transform: uppercase;
+      font-size: 4.2rem;
+      letter-spacing: 0.15em;
+    }
+    .subtitle {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin: 0 0 3rem 0;
+      letter-spacing: 0.15em;
+      font-style: italic;
+      color: white;
+      user-select: none;
+    }
+    .menu-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .menu-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.25rem 0;
+      cursor: pointer;
+      position: relative;
+    }
+    .menu-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: white;
+      bottom: -4px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    .menu-links a:hover,
+    .menu-links a:focus {
+      color: #ddd;
+      outline: none;
+    }
+    .menu-links a:hover::after,
+    .menu-links a:focus::after {
+      width: 100%;
+    }
+
+    /* Portadas de secciones */
     .section-hero {
       position: relative;
-      height: 100vh;
+      height: 70vh;
       width: 100vw;
       background-size: cover;
       background-position: center;
@@ -270,7 +297,8 @@
       text-align: center;
       color: white;
       padding: 0 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0;
+      scroll-margin-top: 0;
     }
     .section-hero::before {
       content: "";
@@ -318,30 +346,32 @@
         font-size: 2.5rem;
         padding: 0 1rem;
       }
+      section {
+        padding-top: 70vh;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="fullscreen-hero" role="banner" aria-label="Imagen principal con menú de navegación" style="background-image: url('https://api.serenitystar.ai/api/v2/file/download/public/d3e1c390-16b4-6f74-d7cb-3a19a5adab88');">
-  <div class="fullscreen-hero-content">
-    <img src="https://api.serenitystar.ai/api/v2/file/download/public/f85c8675-070d-8e2f-0119-3a199c41fb22" alt="Logo Asia by Miguel Asia" class="logo" />
-    <h1 class="title">asia by miguel asia</h1>
-    <p class="subtitle">Cocina de autor</p>
-    <nav class="menu-links" aria-label="Menú principal">
-      <a href="#hero-donde-estamos">Dónde estamos?</a>
-      <a href="#hero-servicios">Servicios</a>
-      <a href="#hero-carta">Carta</a>
-      <a href="#hero-galeria">Galería</a>
-    </nav>
-  </div>
-</div>
+  <div class="fullscreen-hero" role="banner" aria-label="Imagen principal con menú de navegación">
+    <div class="fullscreen-hero-content">
+      <img src="https://api.serenitystar.ai/api/v2/file/download/public/f85c8675-070d-8e2f-0119-3a199c41fb22" alt="Logo Asia by Miguel Asia" class="logo" />
+      <h1 class="title">asia by miguel asia</h1>
+      <p class="subtitle">Cocina de autor</p>
+      <nav class="menu-links" aria-label="Menú principal">
+        <a href="#hero-donde-estamos">Dónde estamos?</a>
+        <a href="#hero-servicios">Servicios</a>
+        <a href="#hero-carta">Carta</a>
+        <a href="#hero-galeria">Galería</a>
+      </nav>
+    </div>
   </div>
 
   <main>
 
     <!-- Portada Dónde estamos -->
-    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Dónde estamos">
+    <div id="hero-donde-estamos" class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Dónde estamos">
       <h2>Dónde estamos</h2>
     </div>
     <section id="donde-estamos" tabindex="-1">
@@ -353,7 +383,7 @@
     </section>
 
     <!-- Portada Servicios -->
-    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Servicios">
+    <div id="hero-servicios" class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Servicios">
       <h2>Servicios</h2>
     </div>
     <section id="servicios" tabindex="-1">
@@ -394,7 +424,7 @@
     </section>
 
     <!-- Portada Carta -->
-    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Carta">
+    <div id="hero-carta" class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Carta">
       <h2>Carta</h2>
     </div>
     <section id="carta" tabindex="-1">
@@ -416,7 +446,7 @@
     </section>
 
     <!-- Portada Galería -->
-    <div class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Galería">
+    <div id="hero-galeria" class="section-hero" style="background-image: url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1950&q=80');" aria-label="Portada sección Galería">
       <h2>Galería</h2>
     </div>
     <section id="galeria" tabindex="-1">
@@ -431,23 +461,4 @@
       <div class="gallery-subsection">
         <img src="https://via.placeholder.com/300x200?text=Salon+1" alt="Nuestro salón 1" />
         <img src="https://via.placeholder.com/300x200?text=Salon+2" alt="Nuestro salón 2" />
-        <img src="https://via.placeholder.com/300x200?text=Salon+3" alt="Nuestro salón 3" />
-      </div>
-
-      <h3>Cocina de autor</h3>
-      <div class="gallery-subsection">
-        <img src="https://via.placeholder.com/300x200?text=Cocina+1" alt="Cocina de autor 1" />
-        <img src="https://via.placeholder.com/300x200?text=Cocina+2" alt="Cocina de autor 2" />
-        <img src="https://via.placeholder.com/300x200?text=Cocina+3" alt="Cocina de autor 3" />
-      </div>
-
-      <h3>Sushi</h3>
-      <div class="gallery-subsection">
-        <img src="https://via.placeholder.com/300x200?text=Sushi+1" alt="Sushi 1" />
-        <img src="https://via.placeholder.com/300x200?text=Sushi+2" alt="Sushi 2" />
-        <img src="https://via.placeholder.com/300x200?text=Sushi+3" alt="Sushi 3" />
-      </div>
-
-      <h3>Nuestros amigos</h3>
-      <div class="gallery-subsection">
-        <img src="https
+        <
