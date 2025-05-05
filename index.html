@@ -6,7 +6,6 @@
   <title>Asia by Miguel Asia</title>
   <!-- Google Fonts: Noto Sans JP y Noto Serif JP -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap" rel="stylesheet" />
-
   <style>
     /* Reset básico */
     *, *::before, *::after {
@@ -181,14 +180,14 @@
 
       /* Grid de dos columnas */
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       align-items: start;
     }
 
-    /* Si quieres que los títulos y subtítulos estén en una columna aparte, puedes ajustar */
+    /* Que los títulos y subtítulos ocupen ambas columnas */
     section > h2, section > h3 {
-      grid-column: 1 / -1; /* que los títulos ocupen ambas columnas */
+      grid-column: 1 / -1;
     }
 
     h2 {
@@ -232,7 +231,6 @@
       border-bottom: none;
       display: inline-block;
       padding-bottom: 0;
-      grid-column: 1 / -1; /* que subtítulos también ocupen ambas columnas */
     }
 
     /* GALERÍA */
@@ -251,6 +249,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
+      grid-column: 1 / -1;
     }
     .gallery-subsection img {
       width: 100%;
@@ -281,7 +280,7 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      grid-column: 1 / -1; /* que el iframe ocupe ambas columnas */
+      grid-column: 1 / -1;
     }
 
     footer {
@@ -359,11 +358,15 @@
       <h2>Dónde estamos</h2>
     </div>
     <section id="donde-estamos" tabindex="-1">
-      <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
-      <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.180517218982!2d-66.2379047!3d-33.2343327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d4152829e9f815%3A0x5474a068ca231bfa!2sAsia%20by%20Miguel%20Asia%20Restaurante!5e0!3m2!1ses!2sar!4v1686979633733!5m2!1ses!2sar" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación del restaurante"></iframe>
+      <div>
+        <p>Estamos ubicados en la Calle Falsa 123, Ciudad Ejemplo.</p>
+        <p>Horario: Lunes a Domingo, 12:00 - 23:00</p>
+      </div>
+      <div>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.180517218982!2d-66.2379047!3d-33.2343327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d4152829e9f815%3A0x5474a068ca231bfa!2sAsia%20by%20Miguel%20Asia%20Restaurante!5e0!3m2!1ses!2sar!4v1686979633733!5m2!1ses!2sar" 
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación del restaurante"></iframe>
+      </div>
     </section>
 
     <!-- Portada Servicios -->
@@ -454,4 +457,7 @@
         <div class="gallery-subsection">
           <img src="https://via.placeholder.com/300x200?text=Salon+1" alt="Nuestro salón 1" />
           <img src="https://via.placeholder.com/300x200?text=Salon+2" alt="Nuestro salón 2" />
-          <img src="https://via.placeholder.com/300x200?text=Salon+3" alt="Nuestro salón 3
+          <img src="https://via.placeholder.com/300x200?text=Salon+3" alt="Nuestro salón 3" />
+        </div>
+        <h3>Cocina de autor</h3>
+        <div class="gallery
